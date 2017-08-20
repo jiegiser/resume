@@ -14,11 +14,11 @@
             window.scrollTo(0, 1);
         }
     </script>
-
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/font-awesome.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-
+    <link rel="stylesheet" href="https://js.arcgis.com/3.21/esri/css/esri.css">
+    <script src="https://js.arcgis.com/3.21/"></script>
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 
 
@@ -34,6 +34,7 @@
             });
         });
     </script>
+
     <!-- start-smooth-scrolling -->
 </head>
 
@@ -382,133 +383,16 @@
                     <div id="map"></div>
 
                     <!-- Map-JavaScript -->
-                    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+                    <link rel="stylesheet" href="https://js.arcgis.com/3.21/esri/css/esri.css">
+                    <script src="https://js.arcgis.com/3.21/"></script>
                     <script type="text/javascript">
-                        google.maps.event.addDomListener(window, 'load', init);
-
-                        function init() {
-                            var mapOptions = {
+                        require(["esri/map", "dojo/domReady!"], function(Map) {
+                            var map = new Map("map", {
+                                center: [103.73, 36.03],
                                 zoom: 11,
-                                center: new google.maps.LatLng(103.73, 36.03),
-                                styles: [{
-                                    "featureType": "all",
-                                    "elementType": "labels.text.fill",
-                                    "stylers": [{
-                                        "saturation": 36
-                                    }, {
-                                        "color": "#000000"
-                                    }, {
-                                        "lightness": 40
-                                    }]
-                                }, {
-                                    "featureType": "all",
-                                    "elementType": "labels.text.stroke",
-                                    "stylers": [{
-                                        "visibility": "on"
-                                    }, {
-                                        "color": "#000000"
-                                    }, {
-                                        "lightness": 16
-                                    }]
-                                }, {
-                                    "featureType": "all",
-                                    "elementType": "labels.icon",
-                                    "stylers": [{
-                                        "visibility": "off"
-                                    }]
-                                }, {
-                                    "featureType": "administrative",
-                                    "elementType": "geometry.fill",
-                                    "stylers": [{
-                                        "color": "#000000"
-                                    }, {
-                                        "lightness": 20
-                                    }]
-                                }, {
-                                    "featureType": "administrative",
-                                    "elementType": "geometry.stroke",
-                                    "stylers": [{
-                                        "color": "#000000"
-                                    }, {
-                                        "lightness": 17
-                                    }, {
-                                        "weight": 1.2
-                                    }]
-                                }, {
-                                    "featureType": "landscape",
-                                    "elementType": "geometry",
-                                    "stylers": [{
-                                        "color": "#000000"
-                                    }, {
-                                        "lightness": 20
-                                    }]
-                                }, {
-                                    "featureType": "poi",
-                                    "elementType": "geometry",
-                                    "stylers": [{
-                                        "color": "#000000"
-                                    }, {
-                                        "lightness": 21
-                                    }]
-                                }, {
-                                    "featureType": "road.highway",
-                                    "elementType": "geometry.fill",
-                                    "stylers": [{
-                                        "color": "#000000"
-                                    }, {
-                                        "lightness": 17
-                                    }]
-                                }, {
-                                    "featureType": "road.highway",
-                                    "elementType": "geometry.stroke",
-                                    "stylers": [{
-                                        "color": "#000000"
-                                    }, {
-                                        "lightness": 29
-                                    }, {
-                                        "weight": 0.2
-                                    }]
-                                }, {
-                                    "featureType": "road.arterial",
-                                    "elementType": "geometry",
-                                    "stylers": [{
-                                        "color": "#000000"
-                                    }, {
-                                        "lightness": 18
-                                    }]
-                                }, {
-                                    "featureType": "road.local",
-                                    "elementType": "geometry",
-                                    "stylers": [{
-                                        "color": "#000000"
-                                    }, {
-                                        "lightness": 16
-                                    }]
-                                }, {
-                                    "featureType": "transit",
-                                    "elementType": "geometry",
-                                    "stylers": [{
-                                        "color": "#000000"
-                                    }, {
-                                        "lightness": 19
-                                    }]
-                                }, {
-                                    "featureType": "water",
-                                    "elementType": "geometry",
-                                    "stylers": [{
-                                        "color": "#000000"
-                                    }, {
-                                        "lightness": 17
-                                    }]
-                                }]
-                            };
-                            var mapElement = document.getElementById('map');
-                            var map = new google.maps.Map(mapElement, mapOptions);
-                            var marker = new google.maps.Marker({
-                                position: new google.maps.LatLng(103.73, 36.03),
-                                map: map,
+                                basemap: "topo"
                             });
-                        }
+                        });
                     </script>
                     <!-- //Map-JavaScript -->
 
